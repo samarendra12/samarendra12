@@ -1,8 +1,12 @@
-# Samarendra Kumar
-### Senior Azure DevOps Engineer | Cloud Platform &amp; GitOps Specialist
+<p align="center">
+  <img src="assets/profile-avatar.png" alt="Samarendra Kumar" width="140" height="140">
+</p>
+
+<h1 align="center">Samarendra Kumar</h1>
+<h3 align="center">Senior Azure DevOps Engineer | Cloud Platform &amp; GitOps Specialist</h3>
 
 <p align="center">
-  <img src="assets/profile-banner.svg" alt="Samarendra Kumar - Senior Azure DevOps Engineer" width="100%">
+  <img src="assets/profile-banner.svg" alt="Samarendra Kumar - Cloud Stack Banner" width="100%">
 </p>
 
 <p align="center">
