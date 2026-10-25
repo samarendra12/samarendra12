@@ -81,9 +81,7 @@ flowchart TD
 
 ---
 
-## 🚀 Standardized Production Portfolio Repositories
-
-Each repository below represents a complete, production-grade implementation containing real code, infrastructure, automated pipelines, test suites, and architectural documentation.
+## 🚀 Flagship Architecture Repositories
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -109,22 +107,10 @@ Each repository below represents a complete, production-grade implementation con
 [![ArgoCD](https://img.shields.io/badge/GitOps-Argo_CD-orange?style=flat-square&logo=argo)](https://github.com/samarendra12/aks-helm-gitops-platform)
 [![Terraform](https://img.shields.io/badge/IaC-Terraform_AKS-purple?style=flat-square&logo=terraform)](https://github.com/samarendra12/aks-helm-gitops-platform)
 
-* **Architecture Highlights:**
-  * End-to-end containerized microservices: Python FastAPI telemetry ingestion backend and React/TypeScript web management dashboard.
-  * Production **Helm 3 Chart** with modularized templates (`deployment.yaml`, `service.yaml`, `telemetry.yaml`), parameterized replica counts, health/liveness probes, and resource quota governance.
-  * Declarative **Argo CD GitOps** application managing automated reconciliation, drift detection, and single-click zero-downtime rollbacks.
-  * Complete Terraform modules provisioning production Azure Kubernetes Service (AKS), system/user node pools, and Azure Container Registry (ACR).
-  * Automated **Azure Pipelines** executing chart linting, Docker image vulnerability scanning, and namespace rollouts.
-
-```
-[Git Commit] ──► [Azure DevOps CI] ──► [Azure Container Reg]
-                        │
-                        ▼ (Helm Package)
-              [GitOps Manifest Repo]
-                        │
-                        ▼ (Continuous Sync)
-              [Argo CD Controller] ──► [Azure Kubernetes Service (AKS)]
-```
+* Containerized Python FastAPI ingestion engine and React/TS web dashboard.
+* Helm 3 Chart with parameterized `values.yaml`, liveness/readiness probes, and resource quotas.
+* Declarative Argo CD GitOps controller automating reconciliation and zero-downtime rollouts.
+* Azure DevOps YAML pipeline for chart linting and container vulnerability validation.
 
 ---
 
@@ -135,27 +121,10 @@ Each repository below represents a complete, production-grade implementation con
 [![Terraform](https://img.shields.io/badge/IaC-Terraform_1.x-7B42BC?style=flat-square&logo=terraform)](https://github.com/samarendra12/azure-hub-spoke-network-iac)
 [![Security](https://img.shields.io/badge/Security-Azure_Firewall-red?style=flat-square&logo=azure)](https://github.com/samarendra12/azure-hub-spoke-network-iac)
 
-* **Architecture Highlights:**
-  * Production Terraform configuration creating an enterprise Hub VNet with dedicated subnets for `AzureFirewallSubnet`, `GatewaySubnet`, and `AzureBastionSubnet`.
-  * Isolated Spoke VNets (`spoke-app` and `spoke-db`) connected via non-transitive bidirectional VNet Peering.
-  * User-Defined Routes (UDR) implementing forced tunneling (`0.0.0.0/0` next-hop to Azure Firewall private IP) to ensure all egress and inter-spoke traffic is centrally inspected.
-  * Zero-trust subnet Network Security Groups (NSGs) restricting lateral network movement.
-
-```
-                        ┌───────────────────────────────────────┐
-                        │             HUB VNET                  │
-                        │  ├── AzureFirewallSubnet (Inspection) │
-                        │  ├── AzureBastionSubnet (Admin Entry) │
-                        │  └── GatewaySubnet (VPN/ExpressRoute) │
-                        └──────────────────┬────────────────────┘
-                                           │
-                     ┌─────────────────────┴─────────────────────┐
-                     ▼ (Bidirectional Peering + UDR)             ▼ (Bidirectional Peering + UDR)
-       ┌───────────────────────────┐               ┌───────────────────────────┐
-       │      SPOKE-APP VNET       │               │       SPOKE-DB VNET       │
-       │  App Services & Workloads │               │  Isolated Database Subnet │
-       └───────────────────────────┘               └───────────────────────────┘
-```
+* Hub VNet with dedicated `AzureFirewallSubnet`, `GatewaySubnet`, and `AzureBastionSubnet`.
+* Non-transitive bidirectional VNet Peering to `spoke-app` and `spoke-db`.
+* User-Defined Routes (UDR) forcing all `0.0.0.0/0` outbound traffic through Azure Firewall private IP.
+* Granular Network Security Groups (NSGs) restricting lateral workload movement.
 
 ---
 
@@ -166,22 +135,9 @@ Each repository below represents a complete, production-grade implementation con
 [![Security](https://img.shields.io/badge/Shift--Left-Gitleaks_&_TFSec-green?style=flat-square&logo=securityscorecard)](https://github.com/samarendra12/azure-devsecops-pipeline)
 [![FinOps](https://img.shields.io/badge/FinOps-Infracost_Analysis-blueviolet?style=flat-square&logo=infracost)](https://github.com/samarendra12/azure-devsecops-pipeline)
 
-* **Architecture Highlights:**
-  * 6-Stage production Azure DevOps pipeline with strict quality and security gates:
-    * **Stage 1 (Gitleaks):** Scans git history to block accidental credential / PAT leakage.
-    * **Stage 2 (TFLint):** Enforces IaC coding standards and validates provider constraints.
-    * **Stage 3 (TFSec):** Scans HCL for cloud misconfigurations before any resource creation.
-    * **Stage 4 (Infracost):** Generates cloud expenditure diffs against Azure pricing APIs directly in pull requests.
-    * **Stage 5 & 6 (Terraform Plan & Apply):** Automated plan artifact generation followed by manual approval-gated apply with Azure Blob state locking.
-
-```
-[Commit] ──► [Stage 1: Gitleaks] ──► [Stage 2: TFLint] ──► [Stage 3: TFSec]
-                                                                  │
-[Manual Approval] ◄── [Stage 5: TF Plan] ◄── [Stage 4: Infracost] ◄
-       │
-       ▼
-[Stage 6: TF Apply] ──► [Azure Production Infrastructure]
-```
+* 6-Stage production pipeline: Gitleaks ➔ TFLint ➔ TFSec ➔ Infracost ➔ TF Plan ➔ Approval Gate ➔ TF Apply.
+* Remote Azure Storage Blob state locking with automated plan artifact validation.
+* Zero hardcoded credentials leveraging service connections and environment secrets.
 
 ---
 
@@ -191,10 +147,9 @@ Each repository below represents a complete, production-grade implementation con
 [![Terraform Library](https://img.shields.io/badge/Terraform-8_Enterprise_Modules-purple?style=flat-square&logo=terraform)](https://github.com/samarendra12/azure-landing-zone-terraform)
 [![Compliance](https://img.shields.io/badge/Compliance-Microsoft_CAF-blue?style=flat-square&logo=microsoft)](https://github.com/samarendra12/azure-landing-zone-terraform)
 
-* **Architecture Highlights:**
-  * 8 enterprise-grade reusable Terraform modules: `resource_group`, `virtual_network`, `subnet`, `network_interface`, `public_ip`, `virtual_machine`, `sql_server`, and `sql_database`.
-  * Complete, verified reference implementation (`examples/complete`) tested with `terraform validate`.
-  * Strict variable typing, structured output exports, and standardized naming conventions enforcing enterprise tagging and governance across Azure environments.
+* 8 Reusable modules: Resource Group, VNet, Subnet, NIC, Public IP, Virtual Machine, SQL Server, and SQL Database.
+* Fully validated end-to-end reference architecture (`examples/complete`) passing `terraform validate`.
+* Standardized resource tagging and governance according to Microsoft enterprise best practices.
 
 ---
 
@@ -205,11 +160,46 @@ Each repository below represents a complete, production-grade implementation con
 [![Containers](https://img.shields.io/badge/Containers-Docker_Compose-2496ED?style=flat-square&logo=docker)](https://github.com/samarendra12/secure-multitier-app-deployment)
 [![Backend](https://img.shields.io/badge/Backend-Python_FastAPI-009688?style=flat-square&logo=fastapi)](https://github.com/samarendra12/secure-multitier-app-deployment)
 
-* **Architecture Highlights:**
-  * Clean architectural separation between edge ingress (Nginx DMZ proxy) and backend application runtimes.
-  * Eliminates hardcoded public IP addressing; traffic to `/api/*` is reverse-proxied internally over private network bridges.
-  * Hardened security headers: Content Security Policy (CSP), `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options: nosniff`.
-  * Multi-stage container builds, non-root user execution, Trivy vulnerability scanning, and production systemd daemon unit definitions.
+* Complete DMZ separation: Nginx edge reverse proxy serving static React SPA with CSP and HSTS headers.
+* Backend FastAPI microservice isolated in private network with zero public ingress.
+* Docker Compose multi-tier stack, Linux systemd daemon unit, and Azure DevOps release pipeline with Trivy scans.
+
+---
+
+## 📂 Complete Cloud Engineering Repository Index
+
+All 24 repositories across my GitHub portfolio are fully structured with production code, CI/CD pipelines, and executive architectural documentation:
+
+### 🏗️ Infrastructure as Code & Cloud Automation
+- [**azure-landing-zone-terraform**](https://github.com/samarendra12/azure-landing-zone-terraform) — Cloud Adoption Framework (CAF) 8 modular Terraform libraries.
+- [**azure-terraform-modules-library**](https://github.com/samarendra12/azure-terraform-modules-library) — Decoupled enterprise Terraform module suite.
+- [**enterprise-todoapp-iac-framework**](https://github.com/samarendra12/enterprise-todoapp-iac-framework) — Multi-environment Terraform framework (`dev`/`prod`) with pipeline templates.
+- [**azure-dynamic-blocks-terraform-iac**](https://github.com/samarendra12/azure-dynamic-blocks-terraform-iac) — Advanced HCL dynamic blocks, for_each expressions & NSG matrices.
+- [**azure-remote-state-backend-iac**](https://github.com/samarendra12/azure-remote-state-backend-iac) — Hardened remote state backend with Blob lease locking and versioning.
+- [**azure-bicep-enterprise-blueprints**](https://github.com/samarendra12/azure-bicep-enterprise-blueprints) — Modular Azure Bicep IaC templates & parameter files.
+- [**azure-packer-image-factory**](https://github.com/samarendra12/azure-packer-image-factory) — HashiCorp Packer automated hardened Linux VM image factory for Azure Compute Gallery.
+- [**azure-terratest-iac-automation**](https://github.com/samarendra12/azure-terratest-iac-automation) — Go & Terratest automated unit and integration tests for Azure Terraform code.
+
+### 🌐 Cloud Networking & Database High-Availability
+- [**azure-hub-spoke-network-iac**](https://github.com/samarendra12/azure-hub-spoke-network-iac) — Hub-and-Spoke VNet architecture with Azure Firewall & custom UDR inspection.
+- [**azure-sql-ha-failover-terraform**](https://github.com/samarendra12/azure-sql-ha-failover-terraform) — Azure SQL Auto-Failover Groups, TDE, and Private Endpoints.
+- [**azure-storage-security-terraform**](https://github.com/samarendra12/azure-storage-security-terraform) — Storage hardening with Customer-Managed Keys (CMK) and SAS automation.
+- [**azure-container-registry-security-iac**](https://github.com/samarendra12/azure-container-registry-security-iac) — ACR Premium with zone-redundant geo-replication and content trust.
+
+### ☸️ Cloud-Native Kubernetes & Microservices
+- [**aks-helm-gitops-platform**](https://github.com/samarendra12/aks-helm-gitops-platform) — Distributed microservices on AKS with Helm 3, Argo CD, and Azure Pipelines.
+- [**azure-kubernetes-production-manifests**](https://github.com/samarendra12/azure-kubernetes-production-manifests) — Production K8s workloads: Deployments, Ingress Controllers, PV/PVC, Services.
+- [**secure-multitier-app-deployment**](https://github.com/samarendra12/secure-multitier-app-deployment) — Zero-trust multi-tier app deployment with Nginx edge proxy & private subnet backend.
+- [**fullstack-microservices-container-stack**](https://github.com/samarendra12/fullstack-microservices-container-stack) — Containerized microservices stack with React, FastAPI, and Docker Compose.
+- [**streamflix-media-streaming-platform**](https://github.com/samarendra12/streamflix-media-streaming-platform) — Netflix-style cloud streaming web application and streaming infrastructure.
+- [**axion-telemetry-data-simulator**](https://github.com/samarendra12/axion-telemetry-data-simulator) — Streaming IoT metric generator for testing cloud ingestion pipelines.
+
+### 🛡️ DevSecOps, Governance & FinOps
+- [**azure-devsecops-pipeline**](https://github.com/samarendra12/azure-devsecops-pipeline) — 6-Stage pipeline with Gitleaks, TFLint, TFSec, Infracost, and manual approvals.
+- [**azure-tfsec-compliance-auditing**](https://github.com/samarendra12/azure-tfsec-compliance-auditing) — Shift-left TFSec compliance auditing and policy enforcement.
+- [**azure-governance-policy-as-code**](https://github.com/samarendra12/azure-governance-policy-as-code) — Subscription-level Azure Policy enforcement (geo-fencing, tagging, TLS 1.2+).
+- [**finops-cloud-cost-optimization-scripts**](https://github.com/samarendra12/finops-cloud-cost-optimization-scripts) — PowerShell FinOps runbooks for automated VM scheduling and orphaned disk elimination.
+- [**devops-interview-mastery-playbook**](https://github.com/samarendra12/devops-interview-mastery-playbook) — Senior DevOps Engineer architectural playbook for HA/DR, state migration, and K8s design.
 
 ---
 
@@ -218,13 +208,13 @@ Each repository below represents a complete, production-grade implementation con
 | Domain | Tools & Technologies | Production Competencies |
 | :--- | :--- | :--- |
 | **Cloud Platforms** | **Microsoft Azure** | AKS, ACR, Azure Key Vault, Storage Blobs, Log Analytics, Azure Monitor, VNet, Azure Firewall, Bastion, Private Endpoints |
-| **Infrastructure as Code** | **Terraform** (0.14 - 1.x), HCL | Reusable Module Engineering, Remote State Locking (Azure Blob), Dynamic Blocks, Workspace Isolation, Workspaces |
+| **Infrastructure as Code** | **Terraform** (0.14 - 1.x), **Bicep** | Reusable Module Engineering, Remote State Locking (Azure Blob), Dynamic Blocks, Workspace Isolation, Bicep Templates |
 | **Containers & K8s** | **Docker**, **Kubernetes (AKS)** | Multi-stage Dockerfiles, Non-root hardening, Pod Disruption Budgets, Horizontal Pod Autoscalers (HPA), Ingress Controllers |
 | **Packaging & GitOps** | **Helm 3**, **Argo CD** | Production Chart Development, Values Hierarchy, Helm Linting, Declarative Sync, Automated Drift Remediation |
 | **CI / CD Pipelines** | **Azure DevOps**, **GitHub Actions**| Multi-stage YAML Pipelines, Self-Hosted Agents, Automated Testing, Semantic Versioning, Environment Approvals |
-| **DevSecOps & Testing**| **Gitleaks**, **TFLint**, **TFSec**, **Trivy**, **Infracost** | Automated Shift-Left Security Gating, IaC Misconfiguration Auditing, Container CVE Scanning, FinOps Cost Estimation |
+| **DevSecOps & Testing**| **Gitleaks**, **TFLint**, **TFSec**, **Trivy**, **Terratest**, **Infracost** | Automated Shift-Left Security Gating, IaC Misconfiguration Auditing, Container CVE Scanning, FinOps Cost Estimation |
 | **Networking & Security**| TCP/IP, CIDR, DNS, SSL/TLS, Nginx | Hub-and-Spoke Routing, User-Defined Routes (UDR), Reverse Proxying, Least-Privilege RBAC, Network Security Groups (NSGs) |
-| **Scripting & OS** | **PowerShell**, **Bash**, **Python** | Linux Administration (Ubuntu / Debian), Windows Server, Infrastructure Automation Scripts, REST API Development |
+| **Scripting & OS** | **PowerShell**, **Bash**, **Python**, **Go** | Linux Administration (Ubuntu / Debian), Windows Server, Infrastructure Automation Scripts, REST API Development |
 
 ---
 
