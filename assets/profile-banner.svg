@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="azureGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="pillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="920" height="220" rx="16" fill="url(#bgGrad)"/>
+  <rect width="920" height="220" rx="16" fill="none" stroke="#334155" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Subtle Grid Accent Lines -->
+  <line x1="40" y1="0" x2="40" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="200" y1="0" x2="200" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="360" y1="0" x2="360" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="520" y1="0" x2="520" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+  <line x1="680" y1="0" x2="680" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
+
+  <!-- Glowing Cyan Line Accent -->
+  <line x1="50" y1="42" x2="320" y2="42" stroke="url(#azureGlow)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Main Title & Name -->
+  <text x="50" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="34" font-weight="800" fill="#F8FAFC" letter-spacing="-0.5">
+    Samarendra Kumar
+  </text>
+
+  <!-- Professional Subtitle -->
+  <text x="50" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#38BDF8">
+    Senior Azure DevOps &amp; Cloud Platform Engineer
+  </text>
+
+  <!-- Core Competencies Line -->
+  <text x="50" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#94A3B8">
+    Enterprise Azure Landing Zones • Terraform IaC • Kubernetes (AKS) • Helm • Argo CD • DevSecOps
+  </text>
+
+  <!-- Pills / Core Specializations -->
+  <g transform="translate(50, 168)">
+    <!-- Pill 1: Azure & AKS -->
+    <rect x="0" y="0" width="130" height="28" rx="14" fill="url(#pillGrad)" stroke="#0284C7" stroke-width="1"/>
+    <circle cx="14" cy="14" r="5" fill="#38BDF8"/>
+    <text x="26" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Azure / AKS</text>
+
+    <!-- Pill 2: Terraform IaC -->
+    <rect x="140" y="0" width="135" height="28" rx="14" fill="url(#pillGrad)" stroke="#7C3AED" stroke-width="1"/>
+    <circle cx="154" cy="14" r="5" fill="#A78BFA"/>
+    <text x="166" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Terraform IaC</text>
+
+    <!-- Pill 3: Helm & GitOps -->
+    <rect x="285" y="0" width="145" height="28" rx="14" fill="url(#pillGrad)" stroke="#0D9488" stroke-width="1"/>
+    <circle cx="299" cy="14" r="5" fill="#2DD4BF"/>
+    <text x="311" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Helm &amp; Argo CD</text>
+
+    <!-- Pill 4: DevSecOps CI/CD -->
+    <rect x="440" y="0" width="160" height="28" rx="14" fill="url(#pillGrad)" stroke="#EA580C" stroke-width="1"/>
+    <circle cx="454" cy="14" r="5" fill="#FB923C"/>
+    <text x="466" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">DevSecOps CI/CD</text>
+  </g>
+
+  <!-- Right Decorative Architecture Badge Card -->
+  <g transform="translate(685, 30)" filter="url(#shadow)">
+    <rect x="0" y="0" width="185" height="160" rx="12" fill="#0B132B" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="185" height="30" rx="12" fill="#1E293B"/>
+    <text x="15" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1">CLOUD STACK</text>
+    
+    <!-- Stack Rows -->
+    <g transform="translate(15, 45)">
+      <text x="0" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38BDF8">Platform:</text>
+      <text x="65" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Azure / AKS</text>
+
+      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#A78BFA">IaC:</text>
+      <text x="65" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Terraform CAF</text>
+
+      <text x="0" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#2DD4BF">Package:</text>
+      <text x="65" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Helm Charts</text>
+
+      <text x="0" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#FB923C">GitOps:</text>
+      <text x="65" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Argo CD / ADO</text>
+
+      <text x="0" y="107" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F43F5E">Security:</text>
+      <text x="65" y="107" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Gitleaks / TFLint</text>
+    </g>
+  </g>
+</svg>
