@@ -186,13 +186,17 @@ All 24 repositories across my GitHub portfolio are fully structured with product
 - [**azure-storage-security-terraform**](https://github.com/samarendra12/azure-storage-security-terraform) — Storage hardening with Customer-Managed Keys (CMK) and SAS automation.
 - [**azure-container-registry-security-iac**](https://github.com/samarendra12/azure-container-registry-security-iac) — ACR Premium with zone-redundant geo-replication and content trust.
 
-### ☸️ Cloud-Native Kubernetes & Microservices
+### ☸️ Cloud-Native Kubernetes & Axion Microservices Ecosystem
 - [**aks-helm-gitops-platform**](https://github.com/samarendra12/aks-helm-gitops-platform) — Distributed microservices on AKS with Helm 3, Argo CD, and Azure Pipelines.
+- [**axion-ui**](https://github.com/samarendra12/axion-ui) — Axion web dashboard (React 18, TypeScript, Tailwind CSS, Vite) for telemetry monitoring.
+- [**axion-ingestion-service**](https://github.com/samarendra12/axion-ingestion-service) — High-throughput Python FastAPI telemetry ingestion engine connected to TimescaleDB.
+- [**axion-data-simulator**](https://github.com/samarendra12/axion-data-simulator) — Distributed IoT sensor telemetry generator stress-testing stream ingestion.
+- [**axion-telemetry-query-service**](https://github.com/samarendra12/axion-telemetry-query-service) — High-concurrency analytical query microservice for time-series metrics.
+- [**axion-database-schema**](https://github.com/samarendra12/axion-database-schema) — TimescaleDB hypertables, compression policies, and analytical SQL schemas.
 - [**azure-kubernetes-production-manifests**](https://github.com/samarendra12/azure-kubernetes-production-manifests) — Production K8s workloads: Deployments, Ingress Controllers, PV/PVC, Services.
 - [**secure-multitier-app-deployment**](https://github.com/samarendra12/secure-multitier-app-deployment) — Zero-trust multi-tier app deployment with Nginx edge proxy & private subnet backend.
 - [**fullstack-microservices-container-stack**](https://github.com/samarendra12/fullstack-microservices-container-stack) — Containerized microservices stack with React, FastAPI, and Docker Compose.
 - [**streamflix-media-streaming-platform**](https://github.com/samarendra12/streamflix-media-streaming-platform) — Netflix-style cloud streaming web application and streaming infrastructure.
-- [**axion-telemetry-data-simulator**](https://github.com/samarendra12/axion-telemetry-data-simulator) — Streaming IoT metric generator for testing cloud ingestion pipelines.
 
 ### 🛡️ DevSecOps, Governance & FinOps
 - [**azure-devsecops-pipeline**](https://github.com/samarendra12/azure-devsecops-pipeline) — 6-Stage pipeline with Gitleaks, TFLint, TFSec, Infracost, and manual approvals.
