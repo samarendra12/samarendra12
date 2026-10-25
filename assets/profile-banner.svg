@@ -1,98 +1,325 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="220">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0f1d"/>
-      <stop offset="50%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="azureGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0078D4"/>
-      <stop offset="50%" stop-color="#38BDF8"/>
-      <stop offset="100%" stop-color="#6366F1"/>
-    </linearGradient>
-    <linearGradient id="pillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
-    </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    <!-- Liquid Water Distortion Filter -->
+    <filter id="waterDistort" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.04" numOctaves="3" result="waterNoise">
+        <animate attributeName="baseFrequency" dur="10s" values="0.015 0.04; 0.03 0.07; 0.015 0.04" repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="waterNoise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
+
+    <!-- Liquid Caustic Ripple Filter for Click / Hover -->
+    <filter id="liquidRipple" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="turbulence" baseFrequency="0.02 0.05" numOctaves="2" result="ripple">
+        <animate attributeName="baseFrequency" dur="6s" values="0.02 0.05; 0.05 0.1; 0.02 0.05" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="ripple" scale="12" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+
+    <!-- Deep Ocean Gradient -->
+    <linearGradient id="deepOceanBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="40%" stop-color="#08142c"/>
+      <stop offset="80%" stop-color="#0c2340"/>
+      <stop offset="100%" stop-color="#061a30"/>
+    </linearGradient>
+
+    <!-- Electric Water Wave Gradients -->
+    <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0e7490" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1" stop-opacity="0.65"/>
+      <stop offset="50%" stop-color="#0284c7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.65"/>
+    </linearGradient>
+
+    <!-- Text Shimmer Gradient -->
+    <linearGradient id="textLiquidShimmer" x1="0%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="25%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="75%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+      <animate attributeName="x1" dur="6s" values="0%; -100%" repeatCount="indefinite"/>
+      <animate attributeName="x2" dur="6s" values="200%; 100%" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- Border Glow Gradient -->
+    <linearGradient id="neonBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <!-- Glassmorphic Card Background -->
+    <linearGradient id="glassCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#091328" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Interactive Ripple Radial Gradients -->
+    <radialGradient id="waterDropletRipple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.4"/>
+      <stop offset="85%" stop-color="#06b6d4" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Styles & Keyframe Animations -->
+    <style>
+      @keyframes waveHorizontal {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(-50px); }
+        100% { transform: translateX(0); }
+      }
+
+      @keyframes waveHorizontalReverse {
+        0% { transform: translateX(-50px); }
+        50% { transform: translateX(0); }
+        100% { transform: translateX(-50px); }
+      }
+
+      @keyframes liquidFlow {
+        0% { transform: translateY(0px) scaleY(1); }
+        50% { transform: translateY(-7px) scaleY(1.04); }
+        100% { transform: translateY(0px) scaleY(1); }
+      }
+
+      @keyframes rippleExpand {
+        0% { transform: scale(0.6); opacity: 0.8; }
+        50% { transform: scale(1.1); opacity: 0.4; }
+        100% { transform: scale(1.5); opacity: 0; }
+      }
+
+      @keyframes floatBubble {
+        0% { transform: translateY(0) scale(0.8); opacity: 0.2; }
+        50% { transform: translateY(-40px) scale(1.1); opacity: 0.7; }
+        100% { transform: translateY(-90px) scale(0.9); opacity: 0; }
+      }
+
+      @keyframes neonPulse {
+        0% { stroke-opacity: 0.5; filter: drop-shadow(0 0 4px #06b6d4); }
+        50% { stroke-opacity: 0.9; filter: drop-shadow(0 0 12px #38bdf8); }
+        100% { stroke-opacity: 0.5; filter: drop-shadow(0 0 4px #06b6d4); }
+      }
+
+      .wave-layer-1 {
+        animation: waveHorizontal 7s ease-in-out infinite, liquidFlow 4s ease-in-out infinite;
+      }
+
+      .wave-layer-2 {
+        animation: waveHorizontalReverse 9s ease-in-out infinite, liquidFlow 5s ease-in-out infinite;
+      }
+
+      .wave-layer-3 {
+        animation: waveHorizontal 6s ease-in-out infinite, liquidFlow 3.5s ease-in-out infinite;
+      }
+
+      .bubble-1 { animation: floatBubble 5s ease-in-out infinite; }
+      .bubble-2 { animation: floatBubble 7s ease-in-out infinite 1.5s; }
+      .bubble-3 { animation: floatBubble 6s ease-in-out infinite 3s; }
+      .bubble-4 { animation: floatBubble 8s ease-in-out infinite 2s; }
+
+      .neon-border-box {
+        animation: neonPulse 4s ease-in-out infinite;
+      }
+
+      /* INTERACTIVE WATER RIPPLE ON HOVER AND CLICK */
+      .banner-interactive-container {
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .banner-interactive-container:hover .wave-layer-1 {
+        animation-duration: 3.5s;
+        filter: url(#waterDistort);
+      }
+
+      .banner-interactive-container:hover .wave-layer-2 {
+        animation-duration: 4s;
+        filter: url(#waterDistort);
+      }
+
+      .banner-interactive-container:hover .wave-layer-3 {
+        animation-duration: 3s;
+      }
+
+      .banner-interactive-container:hover .ripple-active {
+        animation: rippleExpand 1.8s ease-out infinite;
+      }
+
+      /* CLICK / ACTIVE WATER SHOCKWAVE */
+      .banner-interactive-container:active {
+        transform: scale(0.985);
+        filter: url(#liquidRipple);
+      }
+
+      .banner-interactive-container:active .ripple-active {
+        animation: rippleExpand 0.8s ease-out;
+      }
+    </style>
   </defs>
 
-  <!-- Background Base -->
-  <rect width="920" height="220" rx="16" fill="url(#bgGrad)"/>
-  <rect width="920" height="220" rx="16" fill="none" stroke="#334155" stroke-width="1.5" stroke-opacity="0.6"/>
-
-  <!-- Subtle Grid Accent Lines -->
-  <line x1="40" y1="0" x2="40" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-  <line x1="200" y1="0" x2="200" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-  <line x1="360" y1="0" x2="360" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-  <line x1="520" y1="0" x2="520" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-  <line x1="680" y1="0" x2="680" y2="220" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,6" opacity="0.4"/>
-
-  <!-- Glowing Cyan Line Accent -->
-  <line x1="50" y1="42" x2="320" y2="42" stroke="url(#azureGlow)" stroke-width="3" stroke-linecap="round"/>
-
-  <!-- Main Title & Name -->
-  <text x="50" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="34" font-weight="800" fill="#F8FAFC" letter-spacing="-0.5">
-    Samarendra Kumar
-  </text>
-
-  <!-- Professional Subtitle -->
-  <text x="50" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#38BDF8">
-    Senior Azure DevOps &amp; Cloud Platform Engineer
-  </text>
-
-  <!-- Core Competencies Line -->
-  <text x="50" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#94A3B8">
-    Enterprise Azure Landing Zones • Terraform IaC • Kubernetes (AKS) • Helm • Argo CD • DevSecOps
-  </text>
-
-  <!-- Pills / Core Specializations -->
-  <g transform="translate(50, 168)">
-    <!-- Pill 1: Azure & AKS -->
-    <rect x="0" y="0" width="130" height="28" rx="14" fill="url(#pillGrad)" stroke="#0284C7" stroke-width="1"/>
-    <circle cx="14" cy="14" r="5" fill="#38BDF8"/>
-    <text x="26" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Azure / AKS</text>
-
-    <!-- Pill 2: Terraform IaC -->
-    <rect x="140" y="0" width="135" height="28" rx="14" fill="url(#pillGrad)" stroke="#7C3AED" stroke-width="1"/>
-    <circle cx="154" cy="14" r="5" fill="#A78BFA"/>
-    <text x="166" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Terraform IaC</text>
-
-    <!-- Pill 3: Helm & GitOps -->
-    <rect x="285" y="0" width="145" height="28" rx="14" fill="url(#pillGrad)" stroke="#0D9488" stroke-width="1"/>
-    <circle cx="299" cy="14" r="5" fill="#2DD4BF"/>
-    <text x="311" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Helm &amp; Argo CD</text>
-
-    <!-- Pill 4: DevSecOps CI/CD -->
-    <rect x="440" y="0" width="160" height="28" rx="14" fill="url(#pillGrad)" stroke="#EA580C" stroke-width="1"/>
-    <circle cx="454" cy="14" r="5" fill="#FB923C"/>
-    <text x="466" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">DevSecOps CI/CD</text>
-  </g>
-
-  <!-- Right Decorative Architecture Badge Card -->
-  <g transform="translate(685, 30)" filter="url(#shadow)">
-    <rect x="0" y="0" width="185" height="160" rx="12" fill="#0B132B" stroke="#334155" stroke-width="1.5"/>
-    <rect x="0" y="0" width="185" height="30" rx="12" fill="#1E293B"/>
-    <text x="15" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1">CLOUD STACK</text>
+  <!-- Interactive Wrapper Group -->
+  <g class="banner-interactive-container">
+    <!-- Outer Card Background with Rounded Corners -->
+    <rect width="960" height="240" rx="20" fill="url(#deepOceanBg)"/>
     
-    <!-- Stack Rows -->
-    <g transform="translate(15, 45)">
-      <text x="0" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38BDF8">Platform:</text>
-      <text x="65" y="15" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Azure / AKS</text>
+    <!-- Neon Water Glowing Border -->
+    <rect class="neon-border-box" x="1.5" y="1.5" width="957" height="237" rx="19" fill="none" stroke="url(#neonBorder)" stroke-width="2"/>
 
-      <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#A78BFA">IaC:</text>
-      <text x="65" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Terraform CAF</text>
+    <!-- Subtle Digital Grid Lines -->
+    <g opacity="0.12" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="3,6">
+      <line x1="80" y1="0" x2="80" y2="240"/>
+      <line x1="220" y1="0" x2="220" y2="240"/>
+      <line x1="380" y1="0" x2="380" y2="240"/>
+      <line x1="520" y1="0" x2="520" y2="240"/>
+      <line x1="680" y1="0" x2="680" y2="240"/>
+    </g>
 
-      <text x="0" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#2DD4BF">Package:</text>
-      <text x="65" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Helm Charts</text>
+    <!-- Floating Water Caustic Bubbles -->
+    <circle class="bubble-1" cx="120" cy="200" r="4" fill="#38bdf8"/>
+    <circle class="bubble-2" cx="340" cy="210" r="6" fill="#06b6d4"/>
+    <circle class="bubble-3" cx="500" cy="190" r="3.5" fill="#818cf8"/>
+    <circle class="bubble-4" cx="640" cy="215" r="5" fill="#38bdf8"/>
 
-      <text x="0" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#FB923C">GitOps:</text>
-      <text x="65" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Argo CD / ADO</text>
+    <!-- FLOWING LIQUID WATER WAVES (Background Layers) -->
+    <!-- Wave Layer 1 (Deep Ocean Wave) -->
+    <g class="wave-layer-1">
+      <path d="M-50,165 C120,135 240,195 420,160 C600,125 760,185 1020,150 L1020,240 L-50,240 Z" fill="url(#waveGrad1)"/>
+    </g>
 
-      <text x="0" y="107" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#F43F5E">Security:</text>
-      <text x="65" y="107" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="400" fill="#F1F5F9">Gitleaks / TFLint</text>
+    <!-- Wave Layer 2 (Translucent Turquoise Wave with Caustics) -->
+    <g class="wave-layer-2">
+      <path d="M-60,175 C100,195 280,145 460,180 C640,215 800,155 1030,170 L1030,240 L-60,240 Z" fill="url(#waveGrad2)"/>
+    </g>
+
+    <!-- Wave Layer 3 (Foreground Liquid Azure Crest) -->
+    <g class="wave-layer-3">
+      <path d="M-40,190 C140,165 300,210 490,175 C680,140 820,205 1010,180 L1010,240 L-40,240 Z" fill="url(#waveGrad3)"/>
+    </g>
+
+    <!-- Concentric Water Ripples (Triggers on Click & Hover) -->
+    <g transform="translate(240, 110)">
+      <circle class="ripple-active" cx="0" cy="0" r="90" fill="url(#waterDropletRipple)" opacity="0"/>
+      <circle class="ripple-active" cx="0" cy="0" r="140" fill="url(#waterDropletRipple)" opacity="0" style="animation-delay: 0.5s;"/>
+    </g>
+
+    <!-- Left Content: Candidate Identity & Specializations -->
+    <g transform="translate(50, 0)">
+      <!-- Animated Accent Water Line -->
+      <path d="M0,40 Q130,34 260,40 T520,40" stroke="url(#textLiquidShimmer)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Main Name with Liquid Shimmer Effect -->
+      <text x="0" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif" font-size="36" font-weight="900" fill="url(#textLiquidShimmer)" letter-spacing="-0.8">
+        Samarendra Kumar
+      </text>
+
+      <!-- Professional Title with Electric Aqua Glow -->
+      <text x="0" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif" font-size="18" font-weight="700" fill="#38bdf8" letter-spacing="-0.2">
+        Senior Azure DevOps &amp; Cloud Platform Engineer
+      </text>
+
+      <!-- Architecture Disciplines -->
+      <text x="0" y="147" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#94a3b8">
+        Enterprise Azure Landing Zones • Terraform IaC • Kubernetes (AKS) • Helm 3 • Argo CD • DevSecOps
+      </text>
+
+      <!-- Interactive Badge Pills (Floating on Water) -->
+      <g transform="translate(0, 172)">
+        <!-- Pill 1: Azure / AKS -->
+        <g class="banner-pill" transform="translate(0, 0)">
+          <rect width="130" height="32" rx="16" fill="url(#glassCard)" stroke="#0284c7" stroke-width="1.2"/>
+          <circle cx="16" cy="16" r="5" fill="#38bdf8">
+            <animate attributeName="r" values="4.5; 6; 4.5" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <text x="28" y="20.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#f1f5f9">Azure / AKS</text>
+        </g>
+
+        <!-- Pill 2: Terraform IaC -->
+        <g class="banner-pill" transform="translate(142, 0)">
+          <rect width="138" height="32" rx="16" fill="url(#glassCard)" stroke="#818cf8" stroke-width="1.2"/>
+          <circle cx="16" cy="16" r="5" fill="#a78bfa">
+            <animate attributeName="r" values="4.5; 6; 4.5" dur="3.5s" repeatCount="indefinite"/>
+          </circle>
+          <text x="28" y="20.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#f1f5f9">Terraform IaC</text>
+        </g>
+
+        <!-- Pill 3: Helm & Argo CD -->
+        <g class="banner-pill" transform="translate(292, 0)">
+          <rect width="148" height="32" rx="16" fill="url(#glassCard)" stroke="#0d9488" stroke-width="1.2"/>
+          <circle cx="16" cy="16" r="5" fill="#2dd4bf">
+            <animate attributeName="r" values="4.5; 6; 4.5" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+          <text x="28" y="20.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#f1f5f9">Helm &amp; Argo CD</text>
+        </g>
+
+        <!-- Pill 4: DevSecOps CI/CD -->
+        <g class="banner-pill" transform="translate(452, 0)">
+          <rect width="154" height="32" rx="16" fill="url(#glassCard)" stroke="#ea580c" stroke-width="1.2"/>
+          <circle cx="16" cy="16" r="5" fill="#fb923c">
+            <animate attributeName="r" values="4.5; 6; 4.5" dur="3.2s" repeatCount="indefinite"/>
+          </circle>
+          <text x="28" y="20.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#f1f5f9">DevSecOps CI/CD</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right Content: Floating Frosted Glass Cloud Stack Card -->
+    <g transform="translate(710, 26)">
+      <!-- Glass Card Backdrop with Neon Ambient Glow -->
+      <rect width="210" height="188" rx="16" fill="url(#glassCard)" stroke="#1e3a5f" stroke-width="1.5"/>
+      <rect width="210" height="188" rx="16" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.25"/>
+
+      <!-- Card Header -->
+      <g transform="translate(20, 24)">
+        <circle cx="0" cy="0" r="3.5" fill="#38bdf8"/>
+        <text x="12" y="4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#38bdf8" letter-spacing="1.2">
+          CLOUD STACK
+        </text>
+      </g>
+      <line x1="20" y1="40" x2="190" y2="40" stroke="#1e293b" stroke-width="1"/>
+
+      <!-- Stack Rows -->
+      <!-- Row 1: Platform -->
+      <g transform="translate(20, 64)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#0284c7">Platform:</text>
+        <text x="68" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#e2e8f0">Azure / AKS</text>
+      </g>
+
+      <!-- Row 2: IaC -->
+      <g transform="translate(20, 91)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#818cf8">IaC:</text>
+        <text x="68" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#e2e8f0">Terraform CAF</text>
+      </g>
+
+      <!-- Row 3: Packaging -->
+      <g transform="translate(20, 118)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#2dd4bf">Package:</text>
+        <text x="68" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#e2e8f0">Helm 3 Charts</text>
+      </g>
+
+      <!-- Row 4: GitOps -->
+      <g transform="translate(20, 145)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#fb923c">GitOps:</text>
+        <text x="68" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#e2e8f0">Argo CD / ADO</text>
+      </g>
+
+      <!-- Row 5: Security -->
+      <g transform="translate(20, 172)">
+        <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f43f5e">Security:</text>
+        <text x="68" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#e2e8f0">Gitleaks / TFSec</text>
+      </g>
     </g>
   </g>
 </svg>
