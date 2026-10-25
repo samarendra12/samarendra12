@@ -1,14 +1,14 @@
 <div align="center">
 
 <p align="center">
-  <img src="assets/profile-avatar.png" alt="Samarendra Kumar" width="145" height="145" style="border-radius: 50%;">
+  <img src="https://raw.githubusercontent.com/samarendra12/samarendra12/main/assets/profile-avatar.png" alt="Samarendra Kumar" width="145" height="145" style="border-radius: 50%;">
 </p>
 
 # Samarendra Kumar
 ### Senior Azure DevOps Engineer | Cloud Platform Architect | GitOps & Kubernetes Specialist
 
 <p align="center">
-  <img src="assets/profile-banner.svg" alt="Samarendra Kumar - Cloud Stack Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/samarendra12/samarendra12/main/assets/profile-banner.svg" alt="Samarendra Kumar - Cloud Stack Banner" width="100%">
 </p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-samarendra12-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/samarendra12)
