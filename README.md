@@ -222,9 +222,10 @@ All 24 repositories across my GitHub portfolio are fully structured with product
 
 ---
 
+## 📬 Contact & Engagement
+
 - **Location:** India (Available for Global Remote, Hybrid & Relocation Roles)
-- **Primary Professional Email:** [samarendra.automation@gmail.com](mailto:samarendra.automation@gmail.com)
-- **Secondary Professional Email:** [kumarsamarendra1@gmail.com](mailto:kumarsamarendra1@gmail.com)
+- **Primary Email:** [kumarshivansh0020@gmail.com](mailto:kumarshivansh0020@gmail.com)
 - **Direct Phone:** [+91 88064 74068](tel:+918806474068) / [+91 77659 00284](tel:+917765900284)
 - **GitHub Portfolio:** [github.com/samarendra12](https://github.com/samarendra12)
 - **LinkedIn Profile:** [linkedin.com/in/samarendra-kumar](https://linkedin.com/in/samarendra-kumar)
