@@ -12,6 +12,7 @@
 </p>
 
 [![GitHub](https://img.shields.io/badge/GitHub-samarendra12-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/samarendra12)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-samarendra--kumar--devops-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samarendra-kumar-devops)
 [![Microsoft Azure](https://img.shields.io/badge/Microsoft_Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
 [![Terraform](https://img.shields.io/badge/Terraform_Enterprise-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
 [![Kubernetes AKS](https://img.shields.io/badge/Kubernetes_AKS-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
@@ -228,7 +229,7 @@ All 24 repositories across my GitHub portfolio are fully structured with product
 - **Primary Email:** [kumarshivansh0020@gmail.com](mailto:kumarshivansh0020@gmail.com)
 - **Direct Phone:** [+91 88064 74068](tel:+918806474068) / [+91 77659 00284](tel:+917765900284)
 - **GitHub Portfolio:** [github.com/samarendra12](https://github.com/samarendra12)
-- **LinkedIn Profile:** [linkedin.com/in/samarendra-kumar](https://linkedin.com/in/samarendra-kumar)
+- **LinkedIn Profile:** [linkedin.com/in/samarendra-kumar-devops](https://www.linkedin.com/in/samarendra-kumar-devops)
 
 ---
 
