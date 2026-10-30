@@ -27,6 +27,13 @@
 
 </div>
 
+<!-- DAILY_SPOTLIGHT_START -->
+> ### ⚡ Daily Cloud Platform Architecture Spotlight • 2026-10-31
+> **Active Focus:** `Declarative GitOps Continuous Delivery with ArgoCD & Helm 3` (GitOps & Microservices)  
+> *Establishing Git as the Single Source of Truth (SSOT) for AKS clusters. Utilizing ArgoCD sync waves and automated self-healing to reduce MTTR from hours to under 3 minutes.*  
+> 📌 *Senior Azure DevOps Engineer at **Vega Intelli Soft Pvt. Ltd.** • Available on **1 Month Notice Period (30 Days)*** • [Explore Architecture Log ➔](daily_devops_knowledge_log.md)
+<!-- DAILY_SPOTLIGHT_END -->
+
 ---
 
 ## 📊 Enterprise Impact & DORA Metrics Standard
